@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://ri4kpauc3tvo"]
+
+[ext_resource type="Texture2D" uid="uid://b2c3qettitk71" path="res://sprites/Enemies/Bat.png" id="1_j8xwf"]
+[ext_resource type="Script" uid="uid://boaqkmiuqc4em" path="res://scripts/bat.gd" id="1_nvqtc"]
+[ext_resource type="Texture2D" uid="uid://d85txfqgn0lb" path="res://sprites/Shadows/SmallShadow.png" id="2_u55j8"]
+[ext_resource type="PackedScene" uid="uid://bspiw2fsefglc" path="res://scenes/shared/hurtbox.tscn" id="4_kglrw"]
+[ext_resource type="PackedScene" uid="uid://dp6xwpuwudx8m" path="res://scenes/shared/damageable.tscn" id="5_o7u3y"]
+[ext_resource type="PackedScene" uid="uid://bv8vo44027rpu" path="res://scenes/shared/target_detection_zone.tscn" id="6_6nhxx"]
+[ext_resource type="PackedScene" uid="uid://d3b5eqdx3jm3u" path="res://scenes/shared/hitbox.tscn" id="7_pdsqb"]
+[ext_resource type="PackedScene" uid="uid://d1owgrfjjqjly" path="res://scenes/wander_controller.tscn" id="8_oc4sy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fxmk"]
+atlas = ExtResource("1_j8xwf")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfkgr"]
+atlas = ExtResource("1_j8xwf")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu40j"]
+atlas = ExtResource("1_j8xwf")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8sq1"]
+atlas = ExtResource("1_j8xwf")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa3mr"]
+atlas = ExtResource("1_j8xwf")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jo7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fxmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfkgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu40j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8sq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa3mr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_etarg"]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isdkx"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_174li"]
+radius = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y3iir"]
+radius = 7.0
+height = 22.0
+
+[node name="Bat" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 64
+collision_mask = 65
+script = ExtResource("1_nvqtc")
+knock_back_speed = 85
+air_friction = 85
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_7jo7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_etarg")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("2_u55j8")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_kglrw")]
+position = Vector2(0, 15)
+collision_layer = 8
+collision_mask = 16
+is_show_hit = true
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_isdkx")
+
+[node name="Damageable" parent="." instance=ExtResource("5_o7u3y")]
+max_health = 3
+
+[node name="TargetDetectionZone" parent="." instance=ExtResource("6_6nhxx")]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="TargetDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_174li")
+debug_color = Color(0.886275, 0.447059, 0.666667, 0.419608)
+
+[node name="Hitbox" parent="." instance=ExtResource("7_pdsqb")]
+collision_layer = 32
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_y3iir")
+debug_color = Color(0.494118, 0.572549, 0.341176, 0.419608)
+
+[node name="WanderController" parent="." instance=ExtResource("8_oc4sy")]
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="zero_health" from="Damageable" to="." method="_on_damageable_zero_health"]
+[connection signal="wander_target_changed" from="WanderController" to="." method="_on_wander_controller_wander_target_changed"]
+
+[editable path="Hurtbox"]
+[editable path="TargetDetectionZone"]
+[editable path="Hitbox"]

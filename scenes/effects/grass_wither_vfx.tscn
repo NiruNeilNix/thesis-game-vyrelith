@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccpgwgrntin3t"]
+
+[ext_resource type="Texture2D" uid="uid://5u37fr5as7m1" path="res://sprites/Effects/GrassEffect.png" id="1_dawhl"]
+[ext_resource type="Script" uid="uid://bphkdrneflo0o" path="res://scripts/effects/vfx_once.gd" id="1_xqjvd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0itsm"]
+atlas = ExtResource("1_dawhl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytap2"]
+atlas = ExtResource("1_dawhl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5va1"]
+atlas = ExtResource("1_dawhl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tli7c"]
+atlas = ExtResource("1_dawhl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jsv"]
+atlas = ExtResource("1_dawhl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ad0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0itsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytap2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5va1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tli7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jsv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GrassWitherVfx" type="AnimatedSprite2D"]
+texture_filter = 1
+frames = SubResource("SpriteFrames_4ad0x")
+script = ExtResource("1_xqjvd")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsmq07gk2ndao"]
+
+[ext_resource type="PackedScene" uid="uid://c2my0vtkton55" path="res://scenes/player.tscn" id="1_o03e5"]
+[ext_resource type="PackedScene" uid="uid://ri4kpauc3tvo" path="res://scenes/bat.tscn" id="7_vd3k7"]
+[ext_resource type="PackedScene" uid="uid://drc3felmqdad3" path="res://scenes/ui/health_bar.tscn" id="8_cwfk4"]
+
+[node name="World" type="Node2D"]
+texture_filter = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(23, 26)
+position_smoothing_enabled = true
+
+[node name="YSorted" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="YSorted" instance=ExtResource("1_o03e5")]
+position = Vector2(23, 26)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSorted/Player"]
+remote_path = NodePath("../../../Camera2D")
+
+[node name="Enemies" type="Node2D" parent="YSorted"]
+y_sort_enabled = true
+
+[node name="Bat" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
+position = Vector2(72, 112)
+
+[node name="Bat2" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
+position = Vector2(176, 56)
+
+[node name="Bat3" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
+position = Vector2(184, 136)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_cwfk4")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+
+[node name="Overworld" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Overworld"]
