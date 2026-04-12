@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="280" height="280">
+	<defs>
+		<image  width="280" height="280" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAEYAQMAAAC9QHvPAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAADdJREFUeJztyjEBAAAMAqDZv/QiGEC4yXVxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxnLHzxMsBGfgHw2kAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		.s0 { fill: #000000 } 
+		.s1 { fill: #808080 } 
+	</style>
+	<use id="Background" href="#img1" x="0" y="0"/>
+	<path id="Shape 1" fill-rule="evenodd" class="s0" d="m137-6v156h-156v-156z"/>
+	<path id="Shape 2" fill-rule="evenodd" class="s1" d="m305 147v166h-171v-166z"/>
+</svg>
