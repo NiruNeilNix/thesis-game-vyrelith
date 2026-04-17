@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://bsmq07gk2ndao"]
+[gd_scene load_steps=23 format=4 uid="uid://bsmq07gk2ndao"]
 
+[ext_resource type="Script" uid="uid://dus6q26nvlqxa" path="res://scenes/world.gd" id="1_jhx03"]
 [ext_resource type="PackedScene" uid="uid://c2my0vtkton55" path="res://scenes/player.tscn" id="1_o03e5"]
 [ext_resource type="Texture2D" uid="uid://cgihp6qar4gh1" path="res://sprites/World/Virelith_Tileset.png" id="4_qfnet"]
 [ext_resource type="Script" uid="uid://c758bknh6h0db" path="res://addons/terraformer/essentials/renderers/2D/threaded_tilemap_terra_renderer.gd" id="5_i7141"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dqp34d0lnev4s" path="res://addons/terraformer/algorithms/generators/noise_generator/noise_generator_data.gd" id="9_o8fc1"]
 [ext_resource type="Script" uid="uid://dwrgdsi54acb0" path="res://addons/terraformer/essentials/tile_info/tilemap_tile_info.gd" id="10_xo05s"]
 [ext_resource type="Script" uid="uid://byrtf85pb4due" path="res://addons/terraformer/algorithms/generators/cellular_generator/cellular_generator.gd" id="11_dss4m"]
+[ext_resource type="PackedScene" uid="uid://lhl40chrrh6g" path="res://scenes/door.tscn" id="11_o8fc1"]
 [ext_resource type="Script" uid="uid://dovquv1p6iwip" path="res://addons/terraformer/algorithms/generators/cellular_generator/cellular_generator_settings.gd" id="12_7t5mc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7r4gi"]
@@ -686,6 +688,7 @@ metadata/_custom_type_script = "uid://dovquv1p6iwip"
 
 [node name="World" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_jhx03")
 
 [node name="Overworld" type="Node2D" parent="."]
 
@@ -702,6 +705,9 @@ metadata/_custom_type_script = "uid://c758bknh6h0db"
 [node name="NoiseGenerator" type="Node" parent="Overworld/GrassBase"]
 script = ExtResource("6_4mrxx")
 settings = SubResource("Resource_7iits")
+generate_on_ready = false
+random_seed = false
+seed = 2799503073
 metadata/_custom_type_script = "uid://ds151ky4aisp1"
 
 [node name="Road" type="TileMapLayer" parent="Overworld"]
@@ -711,6 +717,9 @@ tile_set = SubResource("TileSet_w7kh3")
 [node name="CellularGenerator" type="Node" parent="Overworld/Road"]
 script = ExtResource("11_dss4m")
 settings = SubResource("Resource_oo54l")
+generate_on_ready = false
+random_seed = false
+seed = 427094003
 metadata/_custom_type_script = "uid://byrtf85pb4due"
 
 [node name="ThreadedTilemapTerraRenderer2" type="Node" parent="Overworld/Road" node_paths=PackedStringArray("tile_map_layers", "generator")]
@@ -719,35 +728,43 @@ tile_map_layers = [NodePath("..")]
 generator = NodePath("../CellularGenerator")
 metadata/_custom_type_script = "uid://c758bknh6h0db"
 
+[node name="Area2D" parent="." instance=ExtResource("11_o8fc1")]
+position = Vector2(435, 280)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(23, 26)
+position = Vector2(481, 91)
 position_smoothing_enabled = true
 
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="YSorted" instance=ExtResource("1_o03e5")]
-position = Vector2(23, 26)
+position = Vector2(481, 91)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSorted/Player"]
+visible = false
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Enemies" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
 [node name="Bat" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
-position = Vector2(414, 121)
+position = Vector2(400, 203)
 
 [node name="Bat2" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
-position = Vector2(370, 272)
+position = Vector2(544, 204)
 
 [node name="Bat3" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
-position = Vector2(608, 348)
+position = Vector2(544, 293)
 
 [node name="Bat4" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
-position = Vector2(631, 168)
+position = Vector2(471, 251)
+
+[node name="Bat5" parent="YSorted/Enemies" instance=ExtResource("7_vd3k7")]
+position = Vector2(402, 294)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("8_cwfk4")]
 offset_left = 2.0

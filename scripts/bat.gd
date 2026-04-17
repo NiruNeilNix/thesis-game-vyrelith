@@ -79,7 +79,9 @@ func _on_damageable_zero_health():
 	world.add_child(vfx_instance)
 	vfx_instance.global_position = self.global_position
 	self.call_deferred("queue_free")
+	die()
 
 func die():
 	GameManager.register_kill()
-	queue_free()
+	print("Enemy died! Total kills: ", GameManager.enemies_killed)
+	queue_free() 

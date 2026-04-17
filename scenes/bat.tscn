@@ -66,7 +66,7 @@ radius = 70.0
 radius = 7.0
 height = 22.0
 
-[node name="Bat" type="CharacterBody2D"]
+[node name="Bat" type="CharacterBody2D" groups=["enemies"]]
 texture_filter = 1
 collision_layer = 64
 collision_mask = 65
@@ -114,7 +114,7 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_y3iir")
 debug_color = Color(0.494118, 0.572549, 0.341176, 0.419608)
 
-[node name="WanderController" parent="." instance=ExtResource("8_oc4sy")]
+[node name="WanderController" parent="." groups=["enemies"] instance=ExtResource("8_oc4sy")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="zero_health" from="Damageable" to="." method="_on_damageable_zero_health"]
