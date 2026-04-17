@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://dmw7o86bs3vde"]
+[gd_scene load_steps=22 format=4 uid="uid://dmw7o86bs3vde"]
 
+[ext_resource type="Script" uid="uid://4ls1nf8yhabn" path="res://scenes/world_2.gd" id="1_04th8"]
 [ext_resource type="Texture2D" uid="uid://cgihp6qar4gh1" path="res://sprites/World/Virelith_Tileset.png" id="1_lo3jn"]
 [ext_resource type="Script" uid="uid://c758bknh6h0db" path="res://addons/terraformer/essentials/renderers/2D/threaded_tilemap_terra_renderer.gd" id="2_04th8"]
 [ext_resource type="Script" uid="uid://ds151ky4aisp1" path="res://addons/terraformer/algorithms/generators/noise_generator/noise_generator.gd" id="3_r15pr"]
@@ -686,6 +687,7 @@ metadata/_custom_type_script = "uid://dovquv1p6iwip"
 
 [node name="World" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_04th8")
 
 [node name="Overworld" type="Node2D" parent="."]
 
@@ -747,7 +749,10 @@ position = Vector2(370, 272)
 position = Vector2(608, 348)
 
 [node name="Bat4" parent="YSorted/Enemies" instance=ExtResource("11_eryfc")]
-position = Vector2(631, 168)
+position = Vector2(235, 167)
+
+[node name="Bat5" parent="YSorted/Enemies" instance=ExtResource("11_eryfc")]
+position = Vector2(467, 487)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -756,3 +761,10 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -53.0
+offset_top = -36.0
+offset_right = 880.0
+offset_bottom = 802.0
+color = Color(0, 0, 0, 0)
