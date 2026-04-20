@@ -751,6 +751,9 @@ position = Vector2(608, 348)
 [node name="Bat4" parent="YSorted/Enemies" instance=ExtResource("11_eryfc")]
 position = Vector2(631, 168)
 
+[node name="Bat5" parent="YSorted/Enemies" instance=ExtResource("11_eryfc")]
+position = Vector2(304, 435)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("12_n1tpw")]
@@ -760,6 +763,7 @@ offset_right = 2.0
 offset_bottom = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 807.0
 offset_bottom = 811.0
 color = Color(0, 0, 0, 0)
