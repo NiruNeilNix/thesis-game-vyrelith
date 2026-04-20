@@ -20,11 +20,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5hr0i")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
 
 [node name="HitVfx" type="AnimatedSprite2D"]
-frames = SubResource("SpriteFrames_oqqaj")
+sprite_frames = SubResource("SpriteFrames_oqqaj")
 script = ExtResource("2_k3im6")
