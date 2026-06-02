@@ -2,20 +2,20 @@
 class_name TokenData
 extends Resource
 
-## Data structure for individual tokens
+
 
 enum TOKENS {
-	PLAYER,
-	ENEMY,
-	ITEM_PICKUP,
-	DIALOGUE,
-	CUTSCENE
+ PLAYER,
+ ENEMY,
+ ITEM_PICKUP,
+ DIALOGUE,
+ CUTSCENE
 }
 
 enum SHAPES {
-	CIRCLE,
-	SQUARE,
-	RECTANGLE
+ CIRCLE,
+ SQUARE,
+ RECTANGLE
 }
 
 @export var token_type: TOKENS = TOKENS.PLAYER
@@ -28,14 +28,14 @@ enum SHAPES {
 @export_multiline var tooltip: String = ""
 
 func _init(
-	p_type: TOKENS = TOKENS.PLAYER,
-	p_shape: SHAPES = SHAPES.CIRCLE,
-	p_color: Color = Color.DODGER_BLUE,
-	p_label: String = "",
-	p_position: Vector2 = Vector2.ZERO
+ p_type: TOKENS = TOKENS.PLAYER,
+ p_shape: SHAPES = SHAPES.CIRCLE,
+ p_color: Color = Color.DODGER_BLUE,
+ p_label: String = "",
+ p_position: Vector2 = Vector2.ZERO
 ):
-	token_type = p_type
-	token_shape = p_shape
-	token_color = p_color
-	token_label = p_label
-	position = p_position
+ token_type = p_type
+ token_shape = p_shape
+ token_color = p_color
+ token_label = p_label
+ position = p_position

@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=4 uid="uid://dmw7o86bs3vde"]
 
-[ext_resource type="Script" uid="uid://dubd3lctruts4" path="res://scenes/world_2.gd" id="1_04th8"]
+[ext_resource type="Script" uid="uid://dubd3lctruts4" path="res://scripts/world_2.gd" id="1_04th8"]
 [ext_resource type="Texture2D" uid="uid://cgihp6qar4gh1" path="res://sprites/World/Virelith_Tileset.png" id="1_lo3jn"]
 [ext_resource type="Script" uid="uid://c758bknh6h0db" path="res://addons/terraformer/essentials/renderers/2D/threaded_tilemap_terra_renderer.gd" id="2_04th8"]
 [ext_resource type="Script" uid="uid://ds151ky4aisp1" path="res://addons/terraformer/algorithms/generators/noise_generator/noise_generator.gd" id="3_r15pr"]
@@ -763,7 +763,6 @@ offset_right = 2.0
 offset_bottom = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 807.0
 offset_bottom = 811.0
 color = Color(0, 0, 0, 0)

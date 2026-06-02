@@ -3,9 +3,9 @@ extends Node2D
 @onready var overlay = get_node("ColorRect")
 
 func _ready():
-	overlay.color.a = 1.0  # force black immediately on load
+	overlay.color.a = 1.0  
 	GameManager.reset()
-	GameManager.enemies_to_kill = 10
+	GameManager.enemies_to_kill = 5
 	GameManager.all_enemies_defeated.connect(_on_all_enemies_defeated)
 	await fade(1.0, 0.0, 1.2)
 

@@ -4,8 +4,8 @@ class_name GenerateBorder
 extends Modifier2D
 
 enum Mode {
-	ADJACENT_ONLY,  ## Only generates borders at the top, bottom, right and left of tiles.
-	INCLUDE_DIAGONALS,  ## Also generates diagonally to tiles.
+ ADJACENT_ONLY,
+ INCLUDE_DIAGONALS,
 }
 
 @export var border_tile_info: TileInfo
@@ -15,22 +15,22 @@ enum Mode {
 var _temp_grid: MapGrid
 
 func apply(grid: MapGrid, generator: TerraGenerator) -> void:
-	_temp_grid = grid.clone()
+ _temp_grid = grid.clone()
 
-	_generate_border_walls(grid)
+ _generate_border_walls(grid)
 
-	generator.grid = _temp_grid.clone()
-	_temp_grid.unreference()
+ generator.grid = _temp_grid.clone()
+ _temp_grid.unreference()
 
 func _generate_border_walls(grid: MapGrid) -> void:
-	for layer in affected_layers:
-		for cell in grid.get_cells(layer):
-			var neighbors = MapGrid2D.SURROUNDING.duplicate()
+ for layer in affected_layers:
+  for cell in grid.get_cells(layer):
+   var neighbors = MapGrid2D.SURROUNDING.duplicate()
 
-			if mode != Mode.INCLUDE_DIAGONALS:
-				for i in [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]:
-					neighbors.erase(i)
+   if mode != Mode.INCLUDE_DIAGONALS:
+    for i in [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, -1), Vector2i(-1, 1)]:
+     neighbors.erase(i)
 
-			for neighbor in neighbors:
-				if not grid.has_cell(cell + neighbor, layer):
-					_temp_grid.set_value(cell + neighbor, border_tile_info)
+   for neighbor in neighbors:
+    if not grid.has_cell(cell + neighbor, layer):
+     _temp_grid.set_value(cell + neighbor, border_tile_info)

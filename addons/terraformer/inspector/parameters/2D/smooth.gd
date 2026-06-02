@@ -8,13 +8,13 @@ extends Modifier2D
 
 
 func apply(grid: MapGrid, generator: TerraGenerator):
-	for i in iterations:
-		for layer in affected_layers:
-			for cell in grid.get_cells(layer):
-				if not _passes_filter(grid, cell):
-					continue
+ for i in iterations:
+  for layer in affected_layers:
+   for cell in grid.get_cells(layer):
+    if not _passes_filter(grid, cell):
+     continue
 
-				var empty_neighbors_count: int = grid.get_amount_of_empty_neighbors(cell, layer)
+    var empty_neighbors_count: int = grid.get_amount_of_empty_neighbors(cell, layer)
 
-				if empty_neighbors_count > maximum_empty_neighbors:
-					grid.erase(cell, layer)
+    if empty_neighbors_count > maximum_empty_neighbors:
+     grid.erase(cell, layer)

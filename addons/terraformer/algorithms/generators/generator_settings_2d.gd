@@ -2,8 +2,8 @@
 class_name GeneratorSettings2D
 extends Resource
 
-@export var modifiers: Array[Modifier2D]  # TODO: Replace with custom control for easier editing. Similar to Blender.
+@export var modifiers: Array[Modifier2D]
 
 func _init() -> void:
-	if resource_name == "":
-		resource_name = "Settings"
+ if resource_name == "":
+  resource_name = "Settings"

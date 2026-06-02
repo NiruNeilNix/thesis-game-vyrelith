@@ -8,31 +8,31 @@ extends TilemapTerraRenderer
 var _queue: TerraTaskQueue
 
 func _process(_delta):
-	if not threaded:
-		return
-	if _queue:
-		_queue.process()
+ if not threaded:
+  return
+ if _queue:
+  _queue.process()
 
 func _draw_area(area: Rect2i) -> void:
-	if not threaded:
-		super(area)
-		return
+ if not threaded:
+  super(area)
+  return
 
-	_ensure_queue()
+ _ensure_queue()
 
-	var _task:Callable = func ():
-		super._draw_area(area)
+ var _task:Callable = func ():
+  super._draw_area(area)
 
-	_queue.enqueue(_task)
+ _queue.enqueue(_task)
 
 func run_task(_task:Callable):
-	if not _task:
-		return
-	_ensure_queue()
-	_queue.enqueue(_task)
+ if not _task:
+  return
+ _ensure_queue()
+ _queue.enqueue(_task)
 
 func _ensure_queue() -> void:
-	if _queue != null:
-		return
-	_queue = TerraTaskQueue.new()
-	_queue.task_limit = task_limit
+ if _queue != null:
+  return
+ _queue = TerraTaskQueue.new()
+ _queue.task_limit = task_limit
