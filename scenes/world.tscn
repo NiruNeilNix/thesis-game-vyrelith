@@ -756,39 +756,24 @@ seed = 460087562
 [sub_resource type="Resource" id="Resource_pm21f"]
 script = ExtResource("10_xo05s")
 type = 1
-tilemap_layer = 0
-terrain_set = 0
 terrain = 1
-id = ""
-layer = 0
 metadata/_custom_type_script = "uid://dwrgdsi54acb0"
 
 [sub_resource type="Resource" id="Resource_2lf6f"]
 script = ExtResource("9_o8fc1")
-title = ""
 tile = SubResource("Resource_pm21f")
-min = -1.0
-max = 1.0
 
 [sub_resource type="Resource" id="Resource_7iits"]
 resource_name = "Settings"
 script = ExtResource("8_jhx03")
 tiles = Array[ExtResource("9_o8fc1")]([SubResource("Resource_2lf6f")])
 noise = SubResource("FastNoiseLite_lakw3")
-infinite = false
 world_size = Vector2i(50, 50)
-falloff_enabled = false
-modifiers = Array[ExtResource("7_q5onr")]([])
 metadata/_custom_type_script = "uid://b7a8lrde8rfmm"
 
 [sub_resource type="Resource" id="Resource_q5onr"]
 script = ExtResource("10_xo05s")
 type = 1
-tilemap_layer = 0
-terrain_set = 0
-terrain = 0
-id = ""
-layer = 0
 metadata/_custom_type_script = "uid://dwrgdsi54acb0"
 
 [sub_resource type="Resource" id="Resource_oo54l"]
@@ -796,11 +781,6 @@ resource_name = "Settings"
 script = ExtResource("12_7t5mc")
 tile = SubResource("Resource_q5onr")
 world_size = Vector2i(50, 50)
-noise_density = 0.5
-smooth_iterations = 6
-max_floor_empty_neighbors = 4
-min_empty_neighbors = 3
-modifiers = Array[ExtResource("7_q5onr")]([])
 metadata/_custom_type_script = "uid://dovquv1p6iwip"
 
 [node name="World" type="Node2D"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbr2cgimlxkht"
-path="res://.godot/imported/wave_function_generator.png-6324c0a3f3362ce7dfe5853c79f17304.ctex"
+uid="uid://chx5avirih6x"
+path="res://.godot/imported/Virelith_Nature.png-cbe031aa0ab9c245b43b9ad9b1c3ea62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/terraformer/algorithms/generators/wave_function_generator/wave_function_generator.png"
-dest_files=["res://.godot/imported/wave_function_generator.png-6324c0a3f3362ce7dfe5853c79f17304.ctex"]
+source_file="res://sprites/World/Virelith_Nature.png"
+dest_files=["res://.godot/imported/Virelith_Nature.png-cbe031aa0ab9c245b43b9ad9b1c3ea62.ctex"]
 
 [params]
 
