@@ -28,7 +28,7 @@ func erase_chunk(chunk_position: Vector2i) -> void:
  for x in get_chunk_axis_range(chunk_position.x, chunk_size.x):
   for y in get_chunk_axis_range(chunk_position.y, chunk_size.y):
    for layer in grid.get_layer_count():
-    grid.erase(Vector2i(x, y), layer)
+	grid.erase(Vector2i(x, y), layer)
 
  (func(): chunk_updated.emit(chunk_position)).call_deferred()
  (func(): chunk_erased.emit(chunk_position)).call_deferred()
