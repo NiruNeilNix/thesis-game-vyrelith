@@ -150,3 +150,5 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _on_damageable_zero_health():
 	self.call_deferred("queue_free")
+	set_physics_process(false)
+	await GameManager.game_over()

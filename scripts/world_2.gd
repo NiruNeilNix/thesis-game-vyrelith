@@ -10,8 +10,7 @@ func _ready():
 	await fade(1.0, 0.0, 1.2)
 
 func _on_all_enemies_defeated():
-	await fade(0.0, 1.0, 2.0)
-	get_tree().quit()
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/thank_you.tscn")
 
 func fade(from_alpha: float, to_alpha: float, duration: float = 0.6) -> void:
 	overlay.color.a = from_alpha

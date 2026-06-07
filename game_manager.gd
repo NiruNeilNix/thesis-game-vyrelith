@@ -17,3 +17,19 @@ func register_kill():
 		
 func reset():
 	enemies_killed = 0
+
+func game_over():
+	# Create fade overlay
+	var canvas_layer = CanvasLayer.new()
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0)
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	canvas_layer.add_child(overlay)
+	get_tree().current_scene.add_child(canvas_layer)
+	
+	# Slow dramatic fade
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(overlay, "color:a", 1.0, 2.0)
+	await tween.finished
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/game_over.tscn")
